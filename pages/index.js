@@ -78,6 +78,8 @@ export default function Home() {
         <span style={{fontSize: 12, color: '#666'}}>This is on average what you have left after {spins * years} spins on the casino. <span style={{color: '#000', borderBottom: '1px solid'}}>You lost {withCommas(Math.round((start_money + ((monthly * 12) * years)) - raw_casino_result))}{currency}.</span></span>
         <br />
         <span>Yes, the stockmarket is also gambling, but it's not scientifically engineered to manipulate your brain into losing as much money as possible.</span>
+        <br />
+        <span>Open source, feel free to contribute on <a style={{color: '#0075ff', textDecoration: 'underline'}} href="https://github.com/Glutch/spintolose" target="_blank">Github</a></span>
       </div>
     </div>
   )
