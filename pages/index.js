@@ -18,7 +18,6 @@ export default function Home() {
   const calculate = () => {
     let previous_year = (parseInt(start_money) + (parseInt(monthly) * 12)) * (years > 0 ? 1.1 : 1)
     for (let i = 1; i < parseInt(years); i++) {
-      console.log(i)
       previous_year = (previous_year + (parseInt(monthly) * 12)) * 1.1
     }
     set_raw_result(previous_year)
@@ -43,22 +42,22 @@ export default function Home() {
         <title>SpinToLose - Gambling vs Stockmarket</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 600}}>
+      <div style={{display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 600, padding: 20}}>
         <h1>Gambling vs Stockmarket</h1>
         <div style={{display: 'flex'}}>
           <div style={{display: 'flex', flex: 2, flexDirection: 'column'}}>
             <span>Starting money</span>
-            <input style={{marginRight: 10, border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_start_money(parseInt(e.target.value) || 0)} value={start_money}/>
+            <input style={{width: 'calc(100% - 10px)', border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_start_money(parseInt(e.target.value) || 0)} value={start_money}/>
           </div>
 
           <div style={{display: 'flex', flex: 1, flexDirection: 'column'}}>
             <span>Currency</span>
-            <input style={{border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_currency(e.target.value)} value={currency}/>
+            <input style={{width: '100%', border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_currency(e.target.value)} value={currency}/>
           </div>
         </div>
 
         <span>Spending / investing per month</span>
-        <input style={{border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_monthly(parseInt(e.target.value) || 0)} value={monthly}/>
+        <input style={{width: '100%', border: '2px solid #0075ff', borderRadius: 3, padding: 10}} onChange={e => set_monthly(parseInt(e.target.value) || 0)} value={monthly}/>
 
         <br />
         
@@ -68,17 +67,18 @@ export default function Home() {
         <span>{spins >= 100 ? '"Until broke"' : spins} {spins == 1 ? 'spin' : 'spins'} per year on the casino</span>
         <input onChange={e => set_spins(e.target.value)} type="range" min="0" max="100" value={spins}/>
         <br />
-        <span>Stocks <span style={{fontSize: 12, color: '#999'}}>+10%. based on average S&P 500 returns per year from 1926-2018</span></span>
+        <span>Stocks <span style={{fontSize: 12, color: '#666'}}>+10% per year</span></span>
+        <span style={{fontSize: 12, color: '#666'}}>Based on S&P 500 average from 1926-2018</span>
         <span style={{fontSize: 20, fontWeight: 'bold'}}>{result}{currency}</span>
-        <span style={{fontSize: 12, color: '#999'}}>After {years} years on the stockmarket you would on average have accumulated {result}{currency}. {withCommas(Math.round(raw_result - (start_money + ((monthly * 12) * years))))}{currency} in pure "winnings"</span>
+        <span style={{fontSize: 12, color: '#666'}}>After {years} years on the stockmarket you would on average have accumulated {result}{currency}. <span style={{color: '#000', borderBottom: '1px solid'}}>{withCommas(Math.round(raw_result - (start_money + ((monthly * 12) * years))))}{currency} in pure "winnings".</span></span>
         <br />
-        <span>Casino <span style={{fontSize: 12, color: '#999'}}>-4%. Based on average RTP 0.96 (return to player)</span></span>
+        <span>Casino <span style={{fontSize: 12, color: '#666'}}>-4% per spin</span></span>
+        <span style={{fontSize: 12, color: '#666'}}>Based on average RTP 0.96 (return to player)</span>
         <span style={{fontSize: 20, fontWeight: 'bold'}}>{casino_result}{currency}</span>
-        <span style={{fontSize: 12, color: '#999'}}>This is on average what you have left after {spins * years} spins on the casino. <span style={{color: '#000', borderBottom: '1px solid'}}>You lost {withCommas(Math.round((start_money + ((monthly * 12) * years)) - raw_casino_result))}{currency}</span></span>
+        <span style={{fontSize: 12, color: '#666'}}>This is on average what you have left after {spins * years} spins on the casino. <span style={{color: '#000', borderBottom: '1px solid'}}>You lost {withCommas(Math.round((start_money + ((monthly * 12) * years)) - raw_casino_result))}{currency}.</span></span>
+        <br />
+        <span>Yes, the stockmarket is also gambling, but it's not scientifically engineered to manipulate your brain into losing as much money as possible.</span>
       </div>
     </div>
   )
 }
-
-
-200 * 1.08 ^ 5
