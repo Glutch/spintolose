@@ -42,7 +42,7 @@ export default function Home() {
         <title>SpinToLose - Gambling vs Stockmarket</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 600, padding: 20}}>
+      <div style={{display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 500, padding: 20}}>
         <h1>Gambling vs Stockmarket</h1>
         <div style={{display: 'flex'}}>
           <div style={{display: 'flex', flex: 2, flexDirection: 'column'}}>
