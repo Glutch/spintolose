@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 export default function Home() {
   const [start_money, set_start_money] = useState(1000)
-  const [years, set_years] = useState(0)
+  const [years, set_years] = useState(1)
   const [spins, set_spins] = useState(10)
   const [currency, set_currency] = useState('kr')
   const [monthly, set_monthly] = useState(0)
@@ -62,7 +62,7 @@ export default function Home() {
         <br />
         
         <span>{years == 0 ? '0 years' : years == 1 ? '1 year' : `${years} years`}</span>
-        <input onChange={e => set_years(e.target.value)} type="range" min="0" max="50" value={years}/>
+        <input onChange={e => set_years(e.target.value)} type="range" min="1" max="50" value={years}/>
 
         <span>{spins >= 100 ? '"Until broke"' : spins} {spins == 1 ? 'spin' : 'spins'} per year on the casino</span>
         <input onChange={e => set_spins(e.target.value)} type="range" min="0" max="100" value={spins}/>
